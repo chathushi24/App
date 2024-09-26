@@ -31,12 +31,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => HomePage(toggleTheme: toggleTheme),
-        SignUp.id: (context) => SignUp(),
-        Login.id: (context) => const Login(),
-        ShopPage.id: (context) => ShopPage(),
-        ProductPage.id: (context) => ProductPage(),
-        ProfilePage.id: (context) => ProfilePage(),
+        '/': (context) => MainScreen(toggleTheme: toggleTheme),
       },
       theme: isDarkMode ? darkTheme : lightTheme,
     );
@@ -86,7 +81,10 @@ class MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ELEGANT ESSENCE"),
+        title: Image.asset(
+          'images/L.png',
+          height: 40,
+        ),
         actions: [
           IconButton(
             icon: const Icon(Icons.brightness_6),
