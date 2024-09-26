@@ -1,6 +1,7 @@
 import 'package:elegant_essence/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:elegant_essence/login.dart';
+import 'package:elegant_essence/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -17,7 +18,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // initialRoute: SignUp.id,
+      initialRoute: homepage.id,
       routes: {
         SignUp.id: (context) => SignUp(),
         Login.id: (context) => Login(),
