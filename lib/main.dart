@@ -14,15 +14,15 @@ class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<MyApp> createState() => MyAppState();
 }
 
-class _MyAppState extends State<MyApp> {
-  bool _isDarkMode = false;
+class MyAppState extends State<MyApp> {
+  bool isDarkMode = false;
 
   void toggleTheme() {
     setState(() {
-      _isDarkMode = !_isDarkMode;
+      isDarkMode = !isDarkMode;
     });
   }
 
@@ -37,22 +37,20 @@ class _MyAppState extends State<MyApp> {
         ShopPage.id: (context) => ShopPage(),
         ProductPage.id: (context) => ProductPage(),
         ProfilePage.id: (context) => ProfilePage(),
-
-
       },
-      theme: _isDarkMode ? _darkTheme : _lightTheme,
+      theme: isDarkMode ? darkTheme : lightTheme,
     );
   }
 }
 
-final ThemeData _lightTheme = ThemeData(
+final ThemeData lightTheme = ThemeData(
   primaryColor: const Color(0xffaf7373),
   scaffoldBackgroundColor: Colors.white,
   brightness: Brightness.light,
   // Add more light theme properties here
 );
 
-final ThemeData _darkTheme = ThemeData(
+final ThemeData darkTheme = ThemeData(
   primaryColor: const Color(0xff6e4747),
   scaffoldBackgroundColor: Colors.grey[900],
   brightness: Brightness.dark,
@@ -65,18 +63,24 @@ class MainScreen extends StatefulWidget {
   const MainScreen({Key? key, required this.toggleTheme}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<MainScreen> createState() => MainScreenState();
 }
 
-class _MainScreenState extends State<MainScreen> {
-  int _currentIndex = 0;
+class MainScreenState extends State<MainScreen> {
+  int currentIndex = 0;
 
-  final List<Widget> _screens = [
-    const Homepage(),
-    const ShopPage(),
-    const ProductPage(),
-    const ProfilePage(),
-  ];
+  late final List<Widget> screens;
+
+  @override
+  void initState() {
+    super.initState();
+    screens = [
+      Homepage(toggleTheme: widget.toggleTheme),
+      const ShopPage(),
+      const ProductPage(),
+      const ProfilePage(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -90,12 +94,12 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ],
       ),
-      body: _screens[_currentIndex],
+      body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _currentIndex,
+        currentIndex: currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            currentIndex = index;
           });
         },
         type: BottomNavigationBarType.fixed,
