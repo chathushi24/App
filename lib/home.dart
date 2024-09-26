@@ -1,9 +1,22 @@
 import 'package:flutter/material.dart';
 
-class Homepage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+  static final String id = "HomePage";
   final Function toggleTheme;
 
   const Homepage({Key? key, required this.toggleTheme}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
 
   @override
   Widget build(BuildContext context) {

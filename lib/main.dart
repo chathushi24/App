@@ -31,7 +31,7 @@ class MyAppState extends State<MyApp> {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => MainScreen(toggleTheme: toggleTheme),
+        '/': (context) => HomePage(toggleTheme: toggleTheme),
         SignUp.id: (context) => SignUp(),
         Login.id: (context) => const Login(),
         ShopPage.id: (context) => ShopPage(),
@@ -75,7 +75,7 @@ class MainScreenState extends State<MainScreen> {
   void initState() {
     super.initState();
     screens = [
-      Homepage(toggleTheme: widget.toggleTheme),
+      HomePage(toggleTheme: widget.toggleTheme),
       const ShopPage(),
       const ProductPage(),
       const ProfilePage(),
