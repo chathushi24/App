@@ -1,45 +1,59 @@
 import 'package:flutter/material.dart';
-import 'package:elegant_essence/login.dart';
-import 'package:elegant_essence/signup.dart';
-import 'package:elegant_essence/layout.dart';
 
-class homepage extends StatefulWidget {
-  const homepage({super.key});
-  static final String id = "homepage";
+
+class Homepage extends StatefulWidget {
+  const Homepage({Key? key}) : super(key: key);
+  static const String id = "homepage";
 
   @override
-  State<homepage> createState() => _homepageState();
+  State<Homepage> createState() => _HomepageState();
 }
 
-class _homepageState extends State<homepage> {
+class _HomepageState extends State<Homepage> {
+  int _currentIndex = 0;
+
+  //Create a list of widgets for each tab
+  final List<Widget> _pages = [
+    const Center(child: Text('Home Page')),
+    const Center(child: Text('Shop Page')),
+    const Center(child: Text('Cart Page')),
+    const Center(child: Text('Profile Page')),
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "ELEGANT ESSENCE",
-      home: Scaffold(
-        body: Column(
-            Text("HELLO"),
-            // ElevatedButton(
-            //   onPressed: (){
-            //     Navigator.push(
-            //       context,
-            //       MaterialPageRoute(builder: (context) => const Login()),
-            //     );
-            //   },
-            //   child: Text("Login"),
-            // ),
-            // ElevatedButton(
-            //     onPressed:(){
-            //       Navigator.push(
-            //         context,
-            //         MaterialPageRoute(builder: (context) => SignUp()),
-            //       );
-            //     },
-            //   child: Text("SignUp"),
-            // ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("ELEGANT ESSENCE"),
       ),
-    );
-  }
-}
-
+      body: _pages[_currentIndex], // Display the selected page
+       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: _currentIndex,
+        onTap: (index) {
+          setState(() {
+           _currentIndex = index;
+         });
+        },
+        type: BottomNavigationBarType.fixed, // Add this line
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+           BottomNavigationBarItem(
+             icon: Icon(Icons.shop),
+             label: 'Shop',
+           ),
+           BottomNavigationBarItem(
+             icon: Icon(Icons.shopping_cart),
+             label: 'Cart',
+           ),
+           BottomNavigationBarItem(
+             icon: Icon(Icons.person),
+             label: 'Profile',
+           ),
+        ],
+       ),
+     );
+   }
+ }
