@@ -32,6 +32,8 @@ class MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => MainScreen(toggleTheme: toggleTheme),
+        SignUp.id: (context) => SignUp(),
+        Login.id: (context)  => const Login(),
       },
       theme: isDarkMode ? darkTheme : lightTheme,
     );
@@ -112,7 +114,7 @@ class MainScreenState extends State<MainScreen> {
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_bag),
-            label: 'Product',
+            label: 'Cart',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),

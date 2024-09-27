@@ -70,6 +70,15 @@ flutter:
     - images/fp4.png
     - images/L.png
     - images/shopbanner.jpg
+    - images/fp5.jpg
+    - images/fp6.jpg
+    - images/fp7.jpg
+    - images/fp8.jpg
+    - images/na1.jpg
+    - images/na2.jpg
+    - images/na3.jpg
+    - images/na4.jpg
+    - images/banner1.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
